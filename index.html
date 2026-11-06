@@ -26,6 +26,23 @@
       color: #ccc;
     }
   }
+  .x {
+  color: red;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.o {
+  color: green;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+td {
+  height: 5rem;
+  width: 5rem;
+  text-align: center;
+}
 </style>
 
 <h1>Tic Tac Toe</h1>
@@ -79,8 +96,8 @@
   );
   const gameOver = document.querySelector("h2");
   const playAgainBtn = document.getElementById("play-again");
-  const HUMAN = "🧑‍💻";
-  const ROBOT = "🤖";
+  const HUMAN = "X";
+  const ROBOT = "O";
 
   // Decide who goes first
   if (Math.random() > 0.5) {
@@ -97,7 +114,8 @@
 
   // The user chose a box, check for win, robot turn, check for win
   function handleClickInput(evt) {
-    evt.target.closest("td").innerHTML = HUMAN;
+    evt.target.closest("td").innerHTML =
+  '<span class="x">' + HUMAN + '</span>';
     if (hasWin()) {
       return endGame("human");
     }
@@ -119,7 +137,8 @@
     while (robotBoxes.length) {
       const box = robotBoxes.shift();
       if (box.querySelector("input")) {
-        box.innerHTML = ROBOT;
+        box.innerHTML =
+  '<span class="o">' + ROBOT + '</span>';
         break;
       }
     }
